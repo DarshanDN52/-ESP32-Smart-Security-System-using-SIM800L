@@ -64,5 +64,6 @@ This project implements a smart security system using an ESP32, designed to dete
 | SIM800 RST       | GPIO25    |
 | LCD SDA/SCL      | Default I2C (GPIO21, GPIO22) |
 
+Full Component Connection Schematic
 ![Smart_Security_Schematic](https://github.com/user-attachments/assets/bed00e7e-7b96-4738-9f27-8f40a670e5e1)
 
