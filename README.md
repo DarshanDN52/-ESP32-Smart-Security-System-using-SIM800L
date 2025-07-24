@@ -68,3 +68,15 @@ This project implements a smart security system using an ESP32, designed to dete
 ## Full Component Connection Schematic
 ![Smart_Security_Schematic](https://github.com/user-attachments/assets/bed00e7e-7b96-4738-9f27-8f40a670e5e1)
 
+## 🛠️ Known Issues & Limitations
+
+| Issue                          | Description                                                                                          | Suggested Fix                                                                 |
+|-------------------------------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| 🔌 **SIM800L Power Instability** | SIM800L often fails to boot or reset if powered directly from ESP32.                                | Use a separate **3.7V Li-ion battery** or **AMS1117 regulator (2A rated)**.   |
+| 📶 **GSM Network Delay**       | SIM800L may take **5–20 seconds** to register with the network after boot.                          | Wait for `AT+CREG: 0,1` response or add a delay before sending commands.      |
+| 📲 **SMS/Call Failure**        | Messages or calls may fail if SIM has low balance or poor signal.                                   | Ensure strong signal, sufficient balance, and valid SIM.                      |
+| 🔁 **False People Count**      | Fast or overlapping movement may cause miscounts via IR sensors.                                   | Add **software debouncing** and increase IR separation distance.             |
+| 🔇 **Buzzer Reset Lag**        | If SMS to reset (`Secure`) is delayed or fails, buzzer will keep sounding.                          | Add **manual reset button** as fallback or retry SMS parsing.                 |
+| 🧠 **Data Not Persistent**     | People count resets after reboot due to no non-volatile memory usage.                              | Use **EEPROM** or **SPIFFS** to store count value.                           |
+| 🔋 **Power Brownouts**         | Running GSM + LCD + sensors from one power source can cause brownouts or reboots.                  | Isolate SIM800L power; use **capacitors** near power rails.                  |
+| 📟 **LCD Flicker**             | LCD may flicker during GSM transmission due to voltage drop.                                       | Use separate power rails or **bypass capacitors** for LCD.                   |
