@@ -1,5 +1,6 @@
 # -ESP32-Smart-Security-System-using-SIM800L
 This project implements a smart security system using an ESP32, designed to detect intrusions, fire, and laser breaches, while providing real-time alerts via SMS and phone calls using the SIM800L GSM module.
+![WhatsApp Image 2025-07-10 at 02 35 14_2c9ad875](https://github.com/user-attachments/assets/748a3afb-17f7-4b31-b2e7-9860ce316f5a)
 
 ## 🔧 Hardware Components
 
